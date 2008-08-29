@@ -30,41 +30,41 @@ http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 = Requirements =
 
- * Key from "Project Honey Pot"
- * Quicklink from "Project Honey Pot"
- * Mediawiki version 1.6 +
- * PHP4 +
+  * Key from "Project Honey Pot"
+  * Quicklink from "Project Honey Pot"
+  * Mediawiki version 1.6 +
+  * PHP4 +
 
 = Features =
 
- * Use Http:BL to detect spammer's
- * Ability to redirect into a trap if the visitor is a spammer
- * Ability to insert addresses traps in the html code of
-   Mediawiki
+  * Use Http:BL to detect spammer's
+  * Ability to redirect into a trap if the visitor is a spammer
+  * Ability to insert addresses traps in the html code of
+    Mediawiki
 
 = Details =
 
- * First download and decompresses the file extension of this
- * Rename the directory the this extension to "wiki-httpbl"
- * Inside the directory "wiki-httpbl" there is a file named 
-   "config.httpbl.php", which is necessary to change the following:
+  * First download and decompresses the file extension of this
+  * Rename the directory the this extension to "wiki-httpbl"
+  * Inside the directory "wiki-httpbl" there is a file named 
+    "config.httpbl.php", which is necessary to change the following:
 
-    * Enter your "key" from Project Honey Pot
-    * Enter a QuickLink or trap, to redirect the spammer's
-    * Enter a word random, to anything, is only to show the Links to spammer's
-      traps
+     * Enter your "key" from Project Honey Pot
+     * Enter a QuickLink or trap, to redirect the spammer's
+     * Enter a word random, to anything, is only to show the Links to spammer's
+       traps
 
- * Upload the "wiki-httpbl" to the directory of extensions you wiki, which is 
-   called "extensions"
- * Open the file named "LocalSettings.php" which is located in the
-   Root directory of your site, after adding the following two lines to
-   End of the file:
+  * Upload the "wiki-httpbl" to the directory of extensions you wiki, which is 
+    called "extensions"
+  * Open the file named "LocalSettings.php" which is located in the
+    Root directory of your site, after adding the following two lines to
+    End of the file:
 
-   # Include Http:bl
-   include ( './extensions/wiki-httpbl/httpbl.php' );
+    # Include Http:bl
+    include ( './extensions/wiki-httpbl/httpbl.php' );
 
- * Save the file and enters your website to see if it is not showing any
-   Error
+  * Save the file and enters your website to see if it is not showing any
+    Error
  
 Lastly and can only wait to block the spammer's coming to you Website.
 

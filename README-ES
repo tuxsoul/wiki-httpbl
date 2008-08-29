@@ -30,41 +30,41 @@ http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 = Requerimientos =
 
- * Key de "Project Honey Pot"
- * Quicklink de "Project Honey Pot" 
- * Mediawiki versión 1.6 +
- * PHP4 +
+  * Key de "Project Honey Pot"
+  * Quicklink de "Project Honey Pot" 
+  * Mediawiki versión 1.6 +
+  * PHP4 +
 
 = Características =
 
- * Usa Http:BL para detectar spammer's
- * Posibilidad de redireccionar hacia una trampa si el visitante es un spammer
- * Posibilidad de insertar direcciones de trampas en el código html de 
-   mediawiki
+  * Usa Http:BL para detectar spammer's
+  * Posibilidad de redireccionar hacia una trampa si el visitante es un spammer
+  * Posibilidad de insertar direcciones de trampas en el código html de 
+    mediawiki
 
 = Detalles =
 
- * Primero descarga y descomprime el archivo de esta extensión
- * Renombra el directorio de la extensión a "wiki-httpbl"
- * Dentro del directorio de "wiki-httpbl" hay un archivo nombrado 
-   "config.httpbl.php", en el cual es necesario cambiar lo siguiente:
+  * Primero descarga y descomprime el archivo de esta extensión
+  * Renombra el directorio de la extensión a "wiki-httpbl"
+  * Dentro del directorio de "wiki-httpbl" hay un archivo nombrado 
+    "config.httpbl.php", en el cual es necesario cambiar lo siguiente:
 
-    * Ingresa tú "key" de Project Honey Pot
-    * Ingresa un QuickLink o trampa, para redireccionar a los spammer's 
-    * Ingresa una palabra aleatoria, la que sea, solo es para mostrar los 
-      enlaces que llevan a trampas para spammer's
+     * Ingresa tú "key" de Project Honey Pot
+     * Ingresa un QuickLink o trampa, para redireccionar a los spammer's 
+     * Ingresa una palabra aleatoria, la que sea, solo es para mostrar los 
+       enlaces que llevan a trampas para spammer's
 
- * Sube el directorio "wiki-httpbl" al directorio de extensiones de tú wiki, el
-   cual tiene el nombre de "extensions"
- * Abre el archivo nombrado "LocalSettings.php" el cual esta ubicado en el
-   directorio raíz de tú sitio web, despúes agrega las siguientes dos lineas al
-   final del archivo:
+  * Sube el directorio "wiki-httpbl" al directorio de extensiones de tú wiki, el
+    cual tiene el nombre de "extensions"
+  * Abre el archivo nombrado "LocalSettings.php" el cual esta ubicado en el
+    directorio raíz de tú sitio web, despúes agrega las siguientes dos lineas al
+    final del archivo:
 
-   # Include Http:bl
-   include ( './extensions/wiki-httpbl/httpbl.php' );
+    # Include Http:bl
+    include ( './extensions/wiki-httpbl/httpbl.php' );
 
- * Salva el archivo y entra a tú sitio web para ver si no se muestra algún 
-   error
+  * Salva el archivo y entra a tú sitio web para ver si no se muestra algún 
+    error
  
 Por último ya solo queda esperar para bloquear a los spammer's que lleguen a tú
 sitio web.

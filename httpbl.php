@@ -29,6 +29,9 @@ if (!defined('MEDIAWIKI')) {
 	die ('You are lost ?');
 }
 
+// Extension version, not core version, is other stuff
+$httpblExtensionVersion = "1";
+
 // Define path of extension
 define('HTTPBL_CWD', dirname(__FILE__));
 
@@ -48,18 +51,19 @@ function httpbl_mediawiki_start () {
 function httpbl_mediawiki_text (&$parser, &$text) {
 	global $httpbl;
 	$text = $httpbl->httpblGetUrlTrap() . $text;
+	return true;
 }
 
 // Extension info
 $wgExtensionCredits['other'][] = array(
        	'name' => $httpbl->httpblInfo('name'),
-        'version' => $httpbl->httpblInfo('version'),
+        'version' => $httpbl->httpblInfo('version') . '.' . $httpblExtensionVersion,
        	'author' => $httpbl->httpblInfo('author'),
         'description' => $httpbl->httpblInfo('description'),
         'url' => $httpbl->httpblInfo('url'),
 );
 
-$wgHooks['ParserBeforeTidy'][] = 'httpbl_mediawiki_text';
+$wgHooks['ParserAfterTidy'][] = 'httpbl_mediawiki_text';
 $wgExtensionFunctions[] = 'httpbl_mediawiki_start';
 
 ?>
