@@ -33,6 +33,9 @@ if (!defined('HTTPBL_CWD')) {
 // main class object
 class coreHttpBL 
 {
+	// config values
+	var $key, $url, $word;
+
 	var $coreHttpBLIp;
 	var $coreHttpBLError;
 
@@ -46,7 +49,7 @@ class coreHttpBL
 	
 		// config
 		// version of this core
-		$this->coreHttpBLConfVersion = '0.1';
+		$this->coreHttpBLConfVersion = '0.2';
 
 		// spammer days since last activity
 		$this->coreHttpBLConfDays = '15';
@@ -96,7 +99,7 @@ class coreHttpBL
 
 		// prepare query to dnsbl
 		$string = $this->coreHttpBLConfDnsbl;
-		$string = ereg_replace('{key}', HTTPBL_KEY, $string);
+		$string = ereg_replace('{key}', $this->key, $string);
 		$string = ereg_replace('{ip}', $reverseIp, $string);
 
 		return $string;
@@ -140,9 +143,9 @@ class coreHttpBL
 	// redirect to the trap
 	function coreHttpBLShowTrap () {
 		if($this->coreHttpBLError == 0) {
-			// FIXME: HTTPBL_TRAP is set correctly ?
-			if(strlen(HTTPBL_TRAP) > 0) {
-				header('Location: ' . HTTPBL_TRAP);
+			// FIXME: $this->url is set correctly ?
+			if(strlen($this->url) > 0) {
+				header('Location: ' . $this->url);
 				die();
 			}
 		}
@@ -151,10 +154,10 @@ class coreHttpBL
 	// return url to trap in html
 	// FIXME: Need more work here :)
 	function coreHttpBLGetUrlTrap () {
-		$text = '<!-- begin links ' . HTTPBL_TRAP_WORD . ' -->';
+		$text = '<!-- begin links ' . $this->word . ' -->';
 
-		// FIXME: HTTPBL_TRAP is set correctly ?
-		if(strlen(HTTPBL_TRAP) > 0) {
+		// FIXME: $this->url is set correctly ?
+		if(strlen($this->url) > 0) {
 			$url = array (
 					'<a href="{url}"><!-- {word} --></a>',
 					'<a href="{url}" style="display: none;">{word}</a>',
@@ -167,16 +170,17 @@ class coreHttpBL
 
 			for($x = 0; $x <= 2; $x++) {
 				$temp = $url[rand(0, 6)];
-				$temp = ereg_replace('{url}', HTTPBL_TRAP, $temp);
-				$temp = ereg_replace('{word}', HTTPBL_TRAP_WORD, $temp);
+				$temp = ereg_replace('{url}', $this->url, $temp);
+				$temp = ereg_replace('{word}', $this->word, $temp);
 
 				$text .= $temp;
 			}
 
-			$text .= '<!-- end links '. HTTPBL_TRAP_WORD . ' -->';
+			$text .= '<!-- end links '. $this->word . ' -->';
 		}
 
 		return $text;
 	}
 }
+
 ?>

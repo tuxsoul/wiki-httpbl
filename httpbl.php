@@ -30,27 +30,35 @@ if (!defined('MEDIAWIKI')) {
 }
 
 // Extension version, not core version, is other stuff
-$httpblExtensionVersion = "1";
+$httpblExtensionVersion = "2";
 
 // Define path of extension
 define('HTTPBL_CWD', dirname(__FILE__));
 
 // Include class to work dnsbl of httpbl
-include(HTTPBL_CWD . '/object.httpbl.php');
+include(HTTPBL_CWD . '/httpbl.object.php');
 
 // Instance object
 $httpbl = new objectHttpBL();
 
 // Execute httpbl filter
 function httpbl_mediawiki_start () {
-	global $httpbl;
-	$httpbl->httpblStart();
+	global $httpbl, $wgWikiHttpBLKey, $wgWikiHttpBLTrap, $wgWikiHttpBLTrapWord;
+
+	$data = array (
+			$wgWikiHttpBLKey,
+			$wgWikiHttpBLTrap,
+			$wgWikiHttpBLTrapWord
+		);
+
+	$httpbl->httpblStart($data);
 }
 
 // Execute httpbl text
 function httpbl_mediawiki_text (&$parser, &$text) {
-	global $httpbl;
-	$text = $httpbl->httpblGetUrlTrap() . $text;
+	global $httpbl, $wgWikiHttpBLTrap, $wgWikiHttpBLTrapWord;
+
+	$text = $httpbl->httpblGetUrlTrap($wgWikiHttpBLTrap, $wgWikiHttpBLTrapWord) . $text;
 	return true;
 }
 

@@ -30,27 +30,27 @@ if (!defined('HTTPBL_CWD')) {
 	die('You are lost ?');
 }
 
-// include config file
-include (HTTPBL_CWD . '/config.httpbl.php');
-
 // include core file
-include (HTTPBL_CWD . '/core.httpbl.php');
+include (HTTPBL_CWD . '/httpbl.core.php');
 
 // main class object
 class objectHttpBL extends coreHttpBL
 {
-	// load configuration
-	function httpbl () {
-
-	}
-
 	// start the search to spammer's
-	function httpblStart () {
+	function httpblStart (&$data) {
+		// set the key to access 'Project Honey Pot'
+		$this->key = $data[0];
+		$this->url = $data[1];
+		$this->word = $data[2];
+
 		$this->coreHttpBLStart();
 	}
 
 	// get url to trap
-	function httpblGetUrlTrap () {
+	function httpblGetUrlTrap (&$url, &$word) {
+		$this->url = $url;
+		$this->word = $word;
+
 		return $this->coreHttpBLGetUrlTrap();
 	}
 
@@ -73,4 +73,5 @@ class objectHttpBL extends coreHttpBL
 			return 'Null';
 	}
 }
+
 ?>

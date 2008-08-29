@@ -3,11 +3,25 @@ CHANGELOG
 ================================================================================
 
 --------------------------------------------------------------------------------
+2008-02-01  -  v0.2.2
+--------------------------------------------------------------------------------
+Whith this release you can configure Http:BL from "LocalSettings.php", for more
+easy install and future updates.
+
+* Delete: "config.httpbl.php"
+* Rename: "core.httpbl.php" to "httpbl.core.php"
+* Rename: "object.httpbl.php" to "httpbl.object.php"
+* Add: "$wgWikiHttpBLKey", set key access to Http:BL (Project Honey Pot)
+* Add: "$wgWikiHttpBLTrap", set quicklink (url trap)
+* Add: "$wgWikiHttpBLTrapWord", set word to work whith quicklink
+* Update: README, README-ES
+
+--------------------------------------------------------------------------------
 2008-01-31  -  v0.1.1
 --------------------------------------------------------------------------------
 * Fix bug #1: "wiki-httpbl stop others extensions using the same wgHook ...."
-* Change $wgHook['ParserBeforeTidy'] to $wgHook['ParserAfterTidy']
-* Change version to v0.1.1
+* Change: $wgHook['ParserBeforeTidy'] to $wgHook['ParserAfterTidy']
+* Change: version to v0.1.1
 
 --------------------------------------------------------------------------------
 2008-01-20  -  v0.1
